@@ -1,0 +1,10 @@
+package com.dbproject.webapp.Repository;
+
+import com.dbproject.webapp.Model.CartItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface CartItemRepository extends JpaRepository<CartItem, Long> {
+    List<CartItem> findByUserId(Long userId);
+}
