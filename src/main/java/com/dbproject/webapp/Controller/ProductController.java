@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.dbproject.webapp.Repository.CategoryRepository;
+import com.dbproject.webapp.Model.Category;
 
 import java.util.List;
 
@@ -15,10 +17,14 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryRepository categoryRepository ;
+
     @GetMapping("/products")
     public String getAllProducts(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
+        model.addAttribute("categories", categoryRepository.findAll()) ;
         return "product"; // Return the name of the Thymeleaf template (product.html)
     }
 

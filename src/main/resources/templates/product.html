@@ -62,28 +62,10 @@
     <section class="product-categories">
         <h2>Product Categories</h2>
         <div class="category-grid">
-            <div class="category-card">
+            <div class="category-card" th:each="category : ${categories}">
                 <a href="#">
-                    <img src="tshirt-category.jpg" alt="T-Shirts">
-                    <h3>T-Shirts</h3>
-                </a>
-            </div>
-            <div class="category-card">
-                <a href="#">
-                    <img src="cap-category.jpg" alt="Caps">
-                    <h3>Caps</h3>
-                </a>
-            </div>
-            <div class="category-card">
-                <a href="#">
-                    <img src="bottle-category.jpg" alt="Bottles">
-                    <h3>Bottles</h3>
-                </a>
-            </div>
-            <div class="category-card">
-                <a href="#">
-                    <img src="pants-category.jpg" alt="Pants">
-                    <h3>Pants</h3>
+                    <img src="images\cap.jpg" alt="product">
+                    <h3 th:text="${category.category}" ></h3>
                 </a>
             </div>
         </div>
