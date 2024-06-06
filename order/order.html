@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page</title>
+    <link rel="stylesheet" href="ordersy.css">
+</head>
+<body class="dark-theme">
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <img src="C:/Users/teeva/OneDrive/Desktop/SEM4/CSC3402-2 (DATABASE APPLICATION DEVELOPMENT)/html/order/logowolf.png" alt="Logo">
+            </div>
+            <nav class="nav-links">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/shop}">Shop</a>
+                <a th:href="@{/about}">About Us</a>
+                <a th:href="@{/contact}">Contact</a>
+            </nav>
+            <div class="header-right">
+                <input type="text" placeholder="Search...">
+                <a th:href="@{/cart}" class="cart-icon">
+                    <span th:text="'Cart (' + ${cartSize} + ')'">Cart (0)</span>
+                </a>
+            </div>
+        </header>
+        
+        <main>
+            <section class="product-image-section">
+                <div class="product-image">
+                    <img src="C:\Users\teeva\OneDrive\Desktop\SEM4\CSC3402-2 (DATABASE APPLICATION DEVELOPMENT)\html\order\jersey.jpg" alt="Jersey">
+                </div>
+                <div class="product-title-section">
+                    <h2 class="product-title" th:text="${product.name}">Jersey</h2>
+                </div>
+            </section>
+
+            <section class="product-details-section">
+                <div class="product-description-section">
+                    <p class="product-description" th:text="${product.description}">MARK A UNIQUE CAMPAIGN IN THIS FAN JERSEY MADE WITH RECYCLED MATERIALS.
+                        </p>
+                </div>
+                <div class="product-price-section">
+                    <p class="product-price" th:text="${product.price}">RM100.00</p>
+                </div>
+                <div class="quantity-selector-section">
+                    <div class="quantity-selector">
+                        <label for="quantity">Quantity:</label>
+                        <button class="quantity-button" id="decrease">-</button>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1">
+                        <button class="quantity-button" id="increase">+</button>
+                    </div>
+                </div>
+                <div class="add-to-cart-section">
+                    <button class="add-to-cart" th:onclick="'addToCart(' + ${product.id} + ',' + document.getElementById('quantity').value + ')'">Add to Cart</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const increaseButton = document.getElementById('increase');
+        const decreaseButton = document.getElementById('decrease');
+        const quantityInput = document.getElementById('quantity');
+
+        increaseButton.addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+
+        decreaseButton.addEventListener('click', () => {
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+
+        function addToCart(productId, quantity) {
+            // Add to cart logic here, e.g., make an AJAX call to add the product to the cart
+            alert('Added ' + quantity + ' of product ' + productId + ' to cart.');
+        }
+    </script>
+</body>
+</html>
