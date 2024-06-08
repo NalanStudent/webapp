@@ -16,26 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `role`
+-- Table structure for table `order_item`
 --
 
-DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `order_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `role` (
+CREATE TABLE `order_item` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `price` decimal(38,2) DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `order_id` bigint DEFAULT NULL,
+  `product_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKs234mi6jususbx4b37k44cipy` (`order_id`),
+  KEY `FK551losx9j75ss5d6bfsqvijna` (`product_id`),
+  CONSTRAINT `FK551losx9j75ss5d6bfsqvijna` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `FKs234mi6jususbx4b37k44cipy` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `order_item`
 --
 
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+LOCK TABLES `order_item` WRITE;
+/*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  2:52:07
+-- Dump completed on 2024-06-09  3:14:40

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
+    <title>Products Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
     <section class="featured-products">
         <h2>Featured Products</h2>
         <div class="product-grid">
-            <div class="product-card" th:each="product : ${products}">
+            <div class="product-card" th:each="product : ${products}" th:if="${product.id > 0 && product.id < 5}">
                 <img th:src="${product.image}">
                 <h3 th:text="${product.name}"></h3>
                 <p>
@@ -63,7 +63,7 @@
         <h2>Product Categories</h2>
         <div class="category-grid">
             <div class="category-card" th:each="category : ${categories}">
-                <a href="#">
+                <a th:href="@{/category/{id}(id=${category.id})}">
                     <img src="images\cap.jpg" alt="product">
                     <h3 th:text="${category.category}" ></h3>
                 </a>
