@@ -16,31 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `product` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `role_id` bigint DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` decimal(38,2) DEFAULT NULL,
+  `category_id` bigint DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKn82ha3ccdebhokx3a8fgdqeyy` (`role_id`),
-  CONSTRAINT `FKn82ha3ccdebhokx3a8fgdqeyy` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK1mtsbur82frn64de7balymq9s` (`category_id`),
+  CONSTRAINT `FK1mtsbur82frn64de7balymq9s` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `product`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'Container for your water','Bottle',15.50,1,'/images/bottle2.jpg'),(2,'Cover your Head','Cool Cap',12.40,2,'/images/cap.jpg'),(3,'Made from comfortable fabrics','Stylish T-Shirt',25.00,3,'/images/tshirt.jpg'),(4,'Strechy like rubber','Comfy Pants',18.00,4,'/images/pants.jpeg');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  2:52:08
+-- Dump completed on 2024-06-09  3:14:40

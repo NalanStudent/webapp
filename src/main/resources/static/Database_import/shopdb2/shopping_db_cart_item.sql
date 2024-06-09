@@ -16,29 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `cart_item`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `cart_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
+CREATE TABLE `cart_item` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `parent_id` bigint DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `product_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK2y94svpmqttx80mshyny85wqr` (`parent_id`),
-  CONSTRAINT `FK2y94svpmqttx80mshyny85wqr` FOREIGN KEY (`parent_id`) REFERENCES `category` (`id`)
+  KEY `FKjcyd5wv4igqnw413rgxbfu4nv` (`product_id`),
+  KEY `FKjnaj4sjyqjkr4ivemf9gb25w` (`user_id`),
+  CONSTRAINT `FKjcyd5wv4igqnw413rgxbfu4nv` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `FKjnaj4sjyqjkr4ivemf9gb25w` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `cart_item`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `cart_item` WRITE;
+/*!40000 ALTER TABLE `cart_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  2:52:08
+-- Dump completed on 2024-06-09  3:14:40

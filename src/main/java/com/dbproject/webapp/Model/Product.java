@@ -14,14 +14,6 @@ public class Product {
     private BigDecimal price;
     private String image;
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -64,5 +56,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
