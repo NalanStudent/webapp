@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="/static/cart.css">
+</head>
+<body class="dark-theme">
+<div class="wrapper">
+    <header>
+        <div class="logo">
+            <img src="/images/logowolf.png" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/shop}">Shop</a>
+            <a th:href="@{/about}">About Us</a>
+            <a th:href="@{/contact}">Contact</a>
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Search...">
+            <a th:href="@{/cart}" class="cart-icon">
+                <span th:text="'Cart (' + ${cart.items.size()} + ')'">Cart (0)</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart-container">
+            <div th:if="${cart.items.size()} == 0">
+                <p>Your cart is empty.</p>
+            </div>
+            <div th:each="item : ${cart.items}" class="cart-item">
+                <img th:src="@{${item.product.imageUrl}}" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4 th:text="${item.product.name}">Product Name</h4>
+                    <p th:text="${item.product.description}">Product Description</p>
+                </div>
+                <div class="cart-item-price">
+                    <p th:text="${item.product.price}">Price</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <input type="number" th:value="${item.quantity}" min="1">
+                </div>
+            </div>
+            <div class="cart-summary">
+                <p>Total Price: <span th:text="${#numbers.formatDecimal(totalPrice, 0, 'POINT', 2, 'COMMA')}"></span></p>
+                <form action="/checkout" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
+                    <button type="submit" class="checkout-button">Checkout</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+</div>
+<footer>
+    <p>&copy; 2024 My Shop. All rights reserved.</p>
+</footer>
+</body>
+</html>
