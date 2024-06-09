@@ -45,7 +45,7 @@
                     <span th:text="${product.price}"></span>
                 </p>
 
-                <a href="#" class="buy-now-button">Buy Now</a>
+                <a th:href="@{/order/{id}(id=${product.id})}" class="buy-now-button">Buy Now</a>
             </div>
 
         </div>
