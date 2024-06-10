@@ -19,7 +19,12 @@
             <a href="#">Contact</a>
         </nav>
         <div class="header-right">
-            <input type="text" placeholder="Search...">
+            <select id="category-selector">
+                <option value="all">All Categories</option>
+                <option value="men">T-Shirts</option>
+                <option value="women">Caps</option>
+                <!-- Add more categories as needed -->
+            </select>
             <a href="#" class="cart-icon">
                 <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
@@ -27,14 +32,6 @@
     </header>
 
     <h1 class="category-page" th:text="${current_category.category}"></h1>
-
-    <!-- Dropdown list -->
-    <select id="category-selector">
-        <option value="all">All Categories</option>
-        <option value="men">Men's T-Shirts</option>
-        <option value="women">Women's T-Shirts</option>
-        <!-- Add more categories as needed -->
-    </select>
 
     <!-- Product grid -->
     <section class="category-page">
@@ -54,7 +51,7 @@
     </section>
 
     <footer class="footer">
-        <p>© 2023 T-Shirts. All rights reserved.</p>
+        <p>© 2024 T-Shirts. All rights reserved.</p>
         <div class="social-links">
             <a href="#">Facebook</a>
             <a href="#">Twitter</a>

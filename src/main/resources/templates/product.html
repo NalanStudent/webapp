@@ -8,149 +8,160 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images\logowolf.png" alt="Logo">
+<header>
+    <div class="logo">
+        <img src="images/logowolf.png" alt="Logo">
+    </div>
+    <nav class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#product-categories">Shop</a>
+        <a href="#about-us">About Us</a>
+        <a href="#about-us">Contact</a>
+    </nav>
+    <div class="header-right">
+        <select id="category-selector">
+            <option value="all">All Categories</option>
+            <option value="men">T-shirts</option>
+            <option value="women">Caps</option>
+            <!-- Add more categories as needed -->
+        </select>
+        <a href="#" class="cart-icon">
+            <span>Cart (0)</span>
+        </a>
+    </div>
+</header>
+
+<section id="top" class="hero">
+    <div class="hero-content">
+        <h1>Style Meets Comfort: Your Go-To Apparel Store</h1>
+        <p>Discover the latest trends in t-shirts, caps, bottles, and pants.</p>
+        <h2>Summer Sale: Up to 50% Off!</h2>
+        <p>Don't miss out on our exclusive summer sale. Shop now and save big on your favorite items!</p>
+        <a href="#featured-products" class="cta-button">Shop the Sale</a>
+    </div>
+</section>
+
+<section id="featured-products" class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+        <div class="product-card" th:each="product : ${products}" th:if="${product.id > 0 && product.id < 5}">
+            <img th:src="${product.image}" alt="Product Image">
+            <h3 th:text="${product.name}"></h3>
+            <p>
+                <span>RM</span>
+                <span th:text="${product.price}"></span>
+            </p>
+            <a th:href="@{/order/{id}(id=${product.id})}" class="buy-now-button">Buy Now</a>
         </div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div class="header-right">
-            <input type="text" placeholder="Search...">
-            <a href="#" class="cart-icon">
-                <span>Cart (0)</span>
+    </div>
+</section>
+
+<section id="product-categories" class="product-categories">
+    <h2>Product Categories</h2>
+    <div class="category-grid">
+        <div class="category-card" th:each="category : ${categories}">
+            <a th:href="@{/category/{id}(id=${category.id})}">
+                <img src="images/cap.jpg" alt="Category Image">
+                <h3 th:text="${category.category}"></h3>
             </a>
         </div>
-    </header>
+    </div>
+</section>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Style Meets Comfort: Your Go-To Apparel Store</h1>
-            <p>Discover the latest trends in t-shirts, caps, bottles, and pants.</p>
-            <a href="#" class="cta-button">Shop Now</a>
-        </div>
-    </section>
-
-    <section class="featured-products">
-        <h2>Featured Products</h2>
-        <div class="product-grid">
-            <div class="product-card" th:each="product : ${products}" th:if="${product.id > 0 && product.id < 5}">
-                <img th:src="${product.image}">
-                <h3 th:text="${product.name}"></h3>
-                <p>
-                    <span>RM</span>
-                    <span th:text="${product.price}"></span>
-                </p>
-
-                <a th:href="@{/order/{id}(id=${product.id})}" class="buy-now-button">Buy Now</a>
+<section class="customer-reviews">
+    <h2>Customer Reviews</h2>
+    <div class="review-carousel">
+        <div class="review-card">
+            <div class="review-photo">
+                <img src="images/customer1.jpg" alt="Customer 1">
             </div>
-
-        </div>
-    </section>
-
-    <section class="promotional">
-        <div class="promo-content">
-            <h2>Summer Sale: Up to 50% Off!</h2>
-            <p>Don't miss out on our exclusive summer sale. Shop now and save big on your favorite items!</p>
-            <a href="#" class="promo-button">Shop the Sale</a>
-        </div>
-    </section>
-
-    <section class="product-categories">
-        <h2>Product Categories</h2>
-        <div class="category-grid">
-            <div class="category-card" th:each="category : ${categories}">
-                <a th:href="@{/category/{id}(id=${category.id})}">
-                    <img src="images\cap.jpg" alt="product">
-                    <h3 th:text="${category.category}" ></h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="customer-reviews">
-        <h2>Customer Reviews</h2>
-        <div class="review-carousel">
-            <div class="review-card">
-                <div class="review-photo">
-                    <img src="customer1.jpg" alt="Customer 1">
-                </div>
-                <div class="review-text">
-                    <p>"Great quality and super comfortable! Will definitely buy again."</p>
-                    <div class="star-rating">
-                        ★★★★★
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="review-photo">
-                    <img src="customer2.jpg" alt="Customer 2">
-                </div>
-                <div class="review-text">
-                    <p>"Excellent customer service and fast shipping. Highly recommend!"</p>
-                    <div class="star-rating">
-                        ★★★★★
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="review-photo">
-                    <img src="customer3.jpg" alt="Customer 3">
-                </div>
-                <div class="review-text">
-                    <p>"The products are exactly as described. Very satisfied with my purchase."</p>
-                    <div class="star-rating">
-                        ★★★★☆
-                    </div>
+            <div class="review-text">
+                <p>"Great quality and super comfortable! Will definitely buy again."</p>
+                <div class="star-rating">
+                    ★★★★★
                 </div>
             </div>
         </div>
-
-    <section class="about-us">
-        <div class="about-content">
-            <h2>About Us</h2>
-            <div class="about-text">
-                <p>We are dedicated to providing you with the best in style and comfort. Our team is passionate about delivering high-quality apparel that not only looks great but also feels great to wear. From trendy t-shirts to stylish caps and comfortable pants, we have everything you need to elevate your wardrobe. Join us in our journey to redefine fashion and embrace the perfect blend of style and comfort.</p>
+        <div class="review-card">
+            <div class="review-photo">
+                <img src="images/customer2.jpg" alt="Customer 2">
             </div>
-            <div class="about-image">
-                <img src="about-us-image.jpg" alt="About Us Image">
+            <div class="review-text">
+                <p>"Excellent customer service and fast shipping. Highly recommend!"</p>
+                <div class="star-rating">
+                    ★★★★★
+                </div>
             </div>
         </div>
-
-    <section class="newsletter-signup">
-        <div class="newsletter-content">
-            <h2>Stay Updated with Our Latest Offers and Collections</h2>
-            <form class="newsletter-form" action="#" method="post">
-                <input type="email" name="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe Now</button>
-            </form>
+        <div class="review-card">
+            <div class="review-photo">
+                <img src="images/customer3.jpg" alt="Customer 3">
+            </div>
+            <div class="review-text">
+                <p>"The products are exactly as described. Very satisfied with my purchase."</p>
+                <div class="star-rating">
+                    ★★★★☆
+                </div>
+            </div>
         </div>
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-links">
-                    <a href="#">FAQ</a>
-                    <a href="#">Return Policy</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-                <div class="social-media">
-                    <a href="#"><img src="images\fb.png" alt="Facebook"></a>
-                    <a href="#"><img src="images\x.png" alt="Twitter"></a>
-                    <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                </div>
-                <div class="contact-info">
-                    <p>Email: info@example.com</p>
-                    <p>Phone: +1234567890</p>
-                    <p>Address: 123 Street, City, Country</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2024 Your Brand Name. All rights reserved.</p>
-            </div>
-        </footer>
+    </div>
+</section>
 
+<section id="about-us" class="about-us">
+    <div class="about-content">
+        <h2>About Us</h2>
+        <div class="about-text">
+            <p>We are dedicated to providing you with the best in style and comfort. Our team is passionate about delivering high-quality apparel that not only looks great but also feels great to wear. From trendy t-shirts to stylish caps and comfortable pants, we have everything you need to elevate your wardrobe. Join us in our journey to redefine fashion and embrace the perfect blend of style and comfort.</p>
+        </div>
+        <div class="about-image">
+            <img src="images/about-us-image.jpg" alt="About Us Image">
+        </div>
+    </div>
+</section>
+
+<section class="newsletter-signup">
+    <div class="newsletter-content">
+        <h2>Stay Updated with Our Latest Offers and Collections</h2>
+        <form class="newsletter-form" action="/subscribe" method="post">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe Now</button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="#">FAQ</a>
+            <a href="#">Return Policy</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="social-media">
+            <a href="#"><img src="images/fb.png" alt="Facebook"></a>
+            <a href="#"><img src="images/x.png" alt="Twitter"></a>
+            <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: customerService@wolf.com</p>
+            <p>Phone: +68-76223272</p>
+            <p>Address: 123 Street, City, UK</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 WOLF. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 </body>
 </html>

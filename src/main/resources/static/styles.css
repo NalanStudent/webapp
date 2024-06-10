@@ -63,7 +63,6 @@ header {
     justify-content: center;
     align-items: center;
     height: 80vh;
-    background-image: url('C:/Users/teeva/OneDrive/Desktop/SEM4/CSC3402-2 (DATABASE APPLICATION DEVELOPMENT)/Wolf/images/background.jpg'); /* Add your background image here */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -91,10 +90,20 @@ header {
     margin-bottom: 20px;
 }
 
+
 .hero p {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 30px;
+    color: #d3d3d3;
 }
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e91e63;
+}
+
+
 
 .cta-button {
     padding: 15px 30px;
@@ -151,7 +160,7 @@ header {
 .product-card p {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #8e8484;
 }
 
 .product-card .buy-now-button {
@@ -173,42 +182,7 @@ header {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.promotional {
-    padding: 50px 20px;
-    background-color: #272727;
-    text-align: center;
-}
 
-.promotional .promo-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.promotional h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #e91e63;
-}
-
-.promotional p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #d3d3d3;
-}
-
-.promo-button {
-    padding: 15px 30px;
-    background-color: #e91e63;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.promo-button:hover {
-    background-color: #d81b60;
-}
 
 .product-categories {
     padding: 50px 20px;
@@ -374,6 +348,19 @@ header {
     border-radius: 0 5px 5px 0;
     font-size: 16px;
     cursor: pointer;
+}
+
+
+.header-right select {
+    padding: 5px;
+    margin-right: 10px;
+    height: 34px; /* Match the height of the search bar */
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #2c2c2c; /* Change color to #2c2c2c */
+    color: #fff;
 }
 
 .newsletter-form button:hover {
