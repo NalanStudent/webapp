@@ -71,7 +71,7 @@
             </div>
             <div class="cart-summary">
                 <h3>Details</h3>
-                <p>Total : <span th:text="${#aggregates.sum(cartproducts.![total])}">RM ??</span></p>
+                <p>Total : RM<span th:text="${#aggregates.sum(cartproducts.![total])}">RM ??</span></p>
                 <form action="" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
                     <button type="submit" class="checkout-button">Checkout</button>
                 </form>

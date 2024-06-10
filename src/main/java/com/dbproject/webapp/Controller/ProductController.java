@@ -87,13 +87,13 @@ public class ProductController {
     @PostMapping("/update-quantity")
     public String updateQuantity(@RequestParam Long itemId, @RequestParam Integer quantity) {
 
-        Product product = productRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + itemId));
-
         BigDecimal qty = new BigDecimal(quantity) ;
 
         Cart itemToUpdate = cartRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + itemId));;
+        //Product product = productRepository.findById(itemToUpdate.getProduct()).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + itemId));
+
         itemToUpdate.setQuantity(quantity);
-        itemToUpdate.setTotal(qty.multiply(product.getPrice()));
+        itemToUpdate.setTotal(qty.multiply(itemToUpdate.getProduct().getPrice()));
         cartRepository.save(itemToUpdate);
 
         return "redirect:/cart"; // Redirect back to the cart page
