@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -8,25 +6,25 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #480808; /* Dark maroon background color */
-    color: #fff; /* Change text color to white for better contrast */
-    display: flex; /* Enable flexbox for footer alignment */
-    min-height: 100vh; /* Ensure viewport height is at least 100% */
-    flex-direction: column; /* Stack content vertically */
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 /* Header styles */
 header {
-    background-color: #000000;
+    background-color: #1c1c1c;
     color: #fff;
-    padding: 20px; /* Corrected padding */
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo img {
-    height: 110px; /* Increase the height of the logo */
+    height: 150px;
 }
 
 .nav-links a {
@@ -44,9 +42,16 @@ header {
     align-items: baseline;
 }
 
-.header-right input[type="text"] {
+.header-right select {
     padding: 5px;
     margin-right: 10px;
+    height: 34px; /* Match the height of the search bar */
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #2c2c2c; /* Change color to #2c2c2c */
+    color: #fff;
 }
 
 .cart-icon {
@@ -63,54 +68,57 @@ header {
     padding-top: 10px;
     padding-bottom: 15px;
     text-align: center;
-    margin-top: 20px; /* Add margin to push content down */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change font to cursive */
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e91e63
 }
 
 .category-page h1 {
-    font-size: 2.5em; /* Increase font size */
+    font-size: 2.5em;
+
 }
 
 .product-grid {
     display: flex;
-    justify-content: center; /* Center the grid horizontally */
-    gap: 50px; /* Spacing between items */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
 .product-card {
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
-    max-width: 300px; /* Increase the width of the product card */
+    max-width: 300px;
     background-color: #f9f9f9;
     border-radius: 8px;
     transition: transform 0.3s, box-shadow 0.3s;
-    color: #000; /* Ensure text is readable against light background */
+    color: #000;
 }
 
 .product-card img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    max-height: 400px; /* Increase the height of the image */
+    max-height: 400px;
 }
 
 .product-card h3 {
     margin-top: 15px;
-    font-size: 1.5em; /* Change the font size of the T-shirt name */
+    font-size: 1.5em;
+    color: #000000; /* Change text color to #e91e63 */
 }
 
 .product-card p {
-    font-size: 1.2em; /* Change the font size of the price */
+    font-size: 1.2em;
     color: #666;
     margin-top: 5px;
 }
 
 .buy-now-button {
     display: inline-block;
-    background-color: #333;
-    color: #fff;
+    background-color: #e91e63; /* pink background */
+    color: #ffffff; /* Contrast color for text */
     padding: 8px 16px;
     text-decoration: none;
     margin-top: 10px;
@@ -118,44 +126,24 @@ header {
 }
 
 .buy-now-button:hover {
-    background-color: #555;
+    background-color: #d81b60; /* Slightly darker pink on hover */
 }
 
 /* Reduce the size of the "LONG SLEEVE" picture by 10% */
 .product-card img[src*="s-l400-removebg-preview.png"] {
-    max-width: 90%; /* Reduce the width by 10% */
-    max-height: 90%; /* Reduce the height by 10% */
+    max-width: 90%;
+    max-height: 90%;
 }
 
 /* Footer styles */
-.footer {
-    background-color: #000000;
-    color: #fff;
-    padding: 50px;
+footer {
     text-align: center;
-    margin-top: auto; /* Push footer to bottom */
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    margin-top: 40px;
 }
 
-.social-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
+footer p {
+    margin: 0;
 }
 
-.social-links a:hover {
-    text-decoration: underline;
-}
-
-
-/* this is not working at the moment 
-/* Style the dropdown */
-.category-selector select {
-    /* Add your preferred styling here */
-    border: 1px solid #333333;
-    align-items: right ;
-    padding-left: 50px;
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    /* Add more styles as needed */
-} 

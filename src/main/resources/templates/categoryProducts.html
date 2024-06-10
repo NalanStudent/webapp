@@ -13,28 +13,23 @@
             <img src="/images/logowolf.png" alt="Logo">
         </div>
         <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
+           <h1><a th:href="@{/}">Home</a></h1>
+
         </nav>
         <div class="header-right">
-            <input type="text" placeholder="Search...">
-            <a href="#" class="cart-icon">
+            <select id="category-selector">
+                <option value="all">All Categories</option>
+                <option value="men">T-Shirts</option>
+                <option value="women">Caps</option>
+            </select>
+
+            <a th:href="@{/cart}" class="cart-icon">
                 <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
         </div>
     </header>
 
     <h1 class="category-page" th:text="${current_category.category}"></h1>
-
-    <!-- Dropdown list -->
-    <select id="category-selector">
-        <option value="all">All Categories</option>
-        <option value="men">Men's T-Shirts</option>
-        <option value="women">Women's T-Shirts</option>
-        <!-- Add more categories as needed -->
-    </select>
 
     <!-- Product grid -->
     <section class="category-page">
@@ -53,13 +48,8 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p>© 2023 T-Shirts. All rights reserved.</p>
-        <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
+    <footer>
+        <p>&copy; 2024 WOLF. All rights reserved.</p>
     </footer>
 </body>
 </html>

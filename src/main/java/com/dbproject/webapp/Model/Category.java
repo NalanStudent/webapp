@@ -16,6 +16,8 @@ public class Category {
     private Category parent;
     // getters and setters
 
+    private String image;
+
     public Long getId() {
         return id;
     }
@@ -39,9 +41,13 @@ public class Category {
     public void setParent(Category parent) {
         this.parent = parent;
     }
-    
-    
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
 
