@@ -20,8 +20,7 @@
         </nav>
         <div class="header-right">
             <input type="text" placeholder="Search...">
-            <a href="" class="cart-icon">
-                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome icon -->
+            <a th:href="@{/cart}" class="cart-icon">
                 <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
         </div>
@@ -80,7 +79,7 @@
     </main>
 </div>
 <footer>
-    <p>&copy; 2024 My Shop. All rights reserved.</p>
+    <p>&copy; 2024 WOLF. All rights reserved.</p>
 </footer>
 
 </body>

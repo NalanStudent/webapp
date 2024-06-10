@@ -25,8 +25,8 @@
             <option value="women">Caps</option>
             <!-- Add more categories as needed -->
         </select>
-        <a href="#" class="cart-icon">
-            <span>Cart (0)</span>
+        <a th:href="@{/cart}" class="cart-icon">
+            <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
         </a>
     </div>
 </header>
@@ -61,7 +61,7 @@
     <div class="category-grid">
         <div class="category-card" th:each="category : ${categories}">
             <a th:href="@{/category/{id}(id=${category.id})}">
-                <img src="images/cap.jpg" alt="Category Image">
+                <img th:src="${category.image}" alt="Category Image">
                 <h3 th:text="${category.category}"></h3>
             </a>
         </div>
@@ -72,9 +72,6 @@
     <h2>Customer Reviews</h2>
     <div class="review-carousel">
         <div class="review-card">
-            <div class="review-photo">
-                <img src="images/customer1.jpg" alt="Customer 1">
-            </div>
             <div class="review-text">
                 <p>"Great quality and super comfortable! Will definitely buy again."</p>
                 <div class="star-rating">
@@ -83,9 +80,6 @@
             </div>
         </div>
         <div class="review-card">
-            <div class="review-photo">
-                <img src="images/customer2.jpg" alt="Customer 2">
-            </div>
             <div class="review-text">
                 <p>"Excellent customer service and fast shipping. Highly recommend!"</p>
                 <div class="star-rating">
@@ -94,9 +88,6 @@
             </div>
         </div>
         <div class="review-card">
-            <div class="review-photo">
-                <img src="images/customer3.jpg" alt="Customer 3">
-            </div>
             <div class="review-text">
                 <p>"The products are exactly as described. Very satisfied with my purchase."</p>
                 <div class="star-rating">
@@ -114,7 +105,7 @@
             <p>We are dedicated to providing you with the best in style and comfort. Our team is passionate about delivering high-quality apparel that not only looks great but also feels great to wear. From trendy t-shirts to stylish caps and comfortable pants, we have everything you need to elevate your wardrobe. Join us in our journey to redefine fashion and embrace the perfect blend of style and comfort.</p>
         </div>
         <div class="about-image">
-            <img src="images/about-us-image.jpg" alt="About Us Image">
+            <img src="images/about-us-image.png" alt="About Us Image">
         </div>
     </div>
 </section>
@@ -138,14 +129,12 @@
             <a href="#">Terms of Service</a>
         </div>
         <div class="social-media">
-            <a href="#"><img src="images/fb.png" alt="Facebook"></a>
-            <a href="#"><img src="images/x.png" alt="Twitter"></a>
-            <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+
         </div>
         <div class="contact-info">
             <p>Email: customerService@wolf.com</p>
             <p>Phone: +68-76223272</p>
-            <p>Address: 123 Street, City, UK</p>
+            <p>Addres: University Putra Malaysia</p>
         </div>
     </div>
     <div class="copyright">

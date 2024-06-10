@@ -1,6 +1,7 @@
 package com.dbproject.webapp.Controller;
 
 import com.dbproject.webapp.Model.Cart;
+import com.dbproject.webapp.Model.Category;
 import com.dbproject.webapp.Model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,6 @@ public class ProductController {
     private CartRepository cartRepository ;
 
     long count ;
-    //Long count = 10L;
 
     @GetMapping("/")
     public String homeredirect(){
@@ -59,7 +59,6 @@ public class ProductController {
         Cart cart = new Cart();
 
         Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + productId));
-
 
         BigDecimal qty = new BigDecimal(quantity) ;
         
@@ -105,5 +104,17 @@ public class ProductController {
         Cart itemToUpdate = cartRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + itemId));;
         cartRepository.delete(itemToUpdate);
         return "redirect:/cart"; // Redirect back to the cart page
+    }
+
+    @GetMapping("/category/{id}")
+    public String getAllProducts(@PathVariable("id") Long id ,Model model) {
+        List<Product> cateproducts = productRepository.findByCategoryId(id) ;
+        Category current_Category = categoryRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+        model.addAttribute("cateproducts", cateproducts);
+        model.addAttribute("current_category", current_Category);
+        count =  cartRepository.count() ;
+        model.addAttribute("counter", count);
+        //model.addAttribute("cate_id", id);
+        return "categoryProducts";
     }
 }
