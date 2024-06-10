@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart Page</title>
-    <link rel="stylesheet" href="/static/cart.css">
+    <link rel="stylesheet" href="/cart.css">
 </head>
 <body class="dark-theme">
 <div class="wrapper">
@@ -20,42 +20,68 @@
         </nav>
         <div class="header-right">
             <input type="text" placeholder="Search...">
-            <a th:href="@{/cart}" class="cart-icon">
-                <span th:text="'Cart (' + ${cart.items.size()} + ')'">Cart (0)</span>
+            <a href="" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome icon -->
+                <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
         </div>
     </header>
 
     <main>
         <section class="cart-container">
-            <div th:if="${cart.items.size()} == 0">
+            <h1>CART HISTORY</h1>
+            <div th:if="${counter} == 0">
                 <p>Your cart is empty.</p>
             </div>
-            <div th:each="item : ${cart.items}" class="cart-item">
-                <img th:src="@{${item.product.imageUrl}}" alt="Product Image">
+            <div  class="cart-item" th:each="item : ${cartproducts}" >
+                <img th:src="${item.product.image}" alt="Product Image">
                 <div class="cart-item-details">
-                    <h4 th:text="${item.product.name}">Product Name</h4>
-                    <p th:text="${item.product.description}">Product Description</p>
+                    <h4 th:text="${item.product.name}">item name</h4>
+                    <p>
+                        <span class="discounted-price" >PER UNIT : RM </span>
+                        <span class="discounted-price" th:text="${item.product.price}">RM ??</span>
+                    </p>
+                    <h4>
+                        <span>Total : RM </span>
+                        <span th:text="${item.total}">?? </span>
+
+                    </h4>
                 </div>
-                <div class="cart-item-price">
-                    <p th:text="${item.product.price}">Price</p>
-                </div>
+
+                <!-- this is where the + - begins-->
                 <div class="cart-item-quantity">
+                    <form th:action="@{/update-quantity}" th:if="${item.quantity >= 2}"  method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="quantity" th:value="${item.quantity - 1}">
+                        <button type="submit" class="quantity-button"> - </button>
+                    </form>
                     <input type="number" th:value="${item.quantity}" min="1">
+                    <form th:action="@{/update-quantity}" method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="quantity" th:value="${item.quantity + 1}">
+                        <button type="submit" class="quantity-button"> + </button>
+                    </form>
                 </div>
+
+                <form th:action="@{/removeItem}" method="post">
+                    <input type="hidden" name="itemId" th:value="${item.id}">
+                    <button class="remove-item">&times;</button>
+                </form>
+
             </div>
             <div class="cart-summary">
-                <p>Total Price: <span th:text="${#numbers.formatDecimal(totalPrice, 0, 'POINT', 2, 'COMMA')}"></span></p>
-                <form action="/checkout" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
+                <h3>Details</h3>
+                <p>Total : <span th:text="${#aggregates.sum(cartproducts.![total])}">RM ??</span></p>
+                <form action="" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
                     <button type="submit" class="checkout-button">Checkout</button>
                 </form>
             </div>
-
         </section>
     </main>
 </div>
 <footer>
     <p>&copy; 2024 My Shop. All rights reserved.</p>
 </footer>
+
 </body>
 </html>

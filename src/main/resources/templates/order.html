@@ -21,7 +21,7 @@
         <div class="header-right">
             <input type="text" placeholder="Search...">
             <a th:href="@{/cart}" class="cart-icon">
-                <span >Cart (0)</span>
+                <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
         </div>
     </header>
