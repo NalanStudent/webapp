@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="/cart.css">
+</head>
+<body class="dark-theme">
+<div class="wrapper">
+    <header>
+        <div class="logo">
+            <img src="/images/logowolf.png" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/shop}">Shop</a>
+            <a th:href="@{/about}">About Us</a>
+            <a th:href="@{/contact}">Contact</a>
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Search...">
+            <a href="" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome icon -->
+                <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart-container">
+            <h1>CART HISTORY</h1>
+            <div th:if="${counter} == 0">
+                <p>Your cart is empty.</p>
+            </div>
+            <div  class="cart-item" th:each="item : ${cartproducts}" >
+                <img th:src="${item.product.image}" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4 th:text="${item.product.name}">item name</h4>
+                    <p>
+                        <span class="discounted-price" >PER UNIT : RM </span>
+                        <span class="discounted-price" th:text="${item.product.price}">RM ??</span>
+                    </p>
+                    <h4>
+                        <span>Total : RM </span>
+                        <span th:text="${item.total}">?? </span>
+
+                    </h4>
+                </div>
+
+                <!-- this is where the + - begins-->
+                <div class="cart-item-quantity">
+                    <form th:action="@{/update-quantity}" th:if="${item.quantity >= 2}"  method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="quantity" th:value="${item.quantity - 1}">
+                        <button type="submit" class="quantity-button"> - </button>
+                    </form>
+                    <input type="number" th:value="${item.quantity}" min="1">
+                    <form th:action="@{/update-quantity}" method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="quantity" th:value="${item.quantity + 1}">
+                        <button type="submit" class="quantity-button"> + </button>
+                    </form>
+                </div>
+
+                <form th:action="@{/removeItem}" method="post">
+                    <input type="hidden" name="itemId" th:value="${item.id}">
+                    <button class="remove-item">&times;</button>
+                </form>
+
+            </div>
+            <div class="cart-summary">
+                <h3>Details</h3>
+                <p>Total : <span th:text="${#aggregates.sum(cartproducts.![total])}">RM ??</span></p>
+                <form action="" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
+                    <button type="submit" class="checkout-button">Checkout</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
+<footer>
+    <p>&copy; 2024 My Shop. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

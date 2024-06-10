@@ -2,10 +2,7 @@ package com.dbproject.webapp.Model;
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Cart {
@@ -13,7 +10,11 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long productId;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private Integer quantity;
     private BigDecimal total;
 
@@ -26,13 +27,6 @@ public class Cart {
         this.id = id;
     }
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
 
     public Integer getQuantity() {
         return quantity;
@@ -50,6 +44,11 @@ public class Cart {
         this.total = total;
     }
 
-    
+    public Product getProduct() {
+        return product;
+    }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
