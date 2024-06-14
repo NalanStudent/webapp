@@ -32,7 +32,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`),
   KEY `FK1mtsbur82frn64de7balymq9s` (`category_id`),
   CONSTRAINT `FK1mtsbur82frn64de7balymq9s` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Container for your water','Bottle',15.50,1,'/images/bottle2.jpg'),(2,'Cover your Head','Cool Cap',12.40,2,'/images/cap.jpg'),(3,'Made from comfortable fabrics','Stylish T-Shirt',25.00,3,'/images/tshirt.jpg'),(4,'Strechy like rubber','Comfy Pants',18.00,4,'/images/pants.jpeg');
+INSERT INTO `product` VALUES (1,'Cover your Head','White Cap',12.40,2,'/images/whitecap.png'),(2,'Made from comfortable fabrics','Stylish T-Shirt(Men)',25.00,3,'/images/t-shirtmale.png'),(3,'Strechy like rubber','Comfy Shorts',18.00,4,'/images/shorts.png'),(4,'Best steel ','Stainless Steel Bottle',20.00,1,'/images/bottlest.png'),(5,'Best glass','Glass Bottle',17.00,1,'/images/bottlegl.png'),(6,'Cool cover','Black cap',12.40,2,'/images/blackcap.png'),(7,'Best Fit','Stylish T-Shirt(Women)',25.00,3,'/images/t-shirtfemale.png'),(8,'Baggy and Relax','Cargo Pants',21.00,4,'/images/cargopants.png');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-09  3:14:40
+-- Dump completed on 2024-06-14 13:47:11
