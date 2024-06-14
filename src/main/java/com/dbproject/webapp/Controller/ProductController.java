@@ -110,6 +110,8 @@ public class ProductController {
     public String getAllProducts(@PathVariable("id") Long id ,Model model) {
         List<Product> cateproducts = productRepository.findByCategoryId(id) ;
         Category current_Category = categoryRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+
+        model.addAttribute("categories", categoryRepository.findAll()) ;
         model.addAttribute("cateproducts", cateproducts);
         model.addAttribute("current_category", current_Category);
         count =  cartRepository.count() ;

@@ -19,9 +19,9 @@
         <div class="header-right">
             <select id="category-selector">
                 <option value="all">All Categories</option>
-                <option value="men">T-Shirts</option>
-                <option value="women">Caps</option>
+                <option th:each="category : ${categories}" th:value="@{/category/{id}(id=${category.id})}" th:text="${category.category}"></option>
             </select>
+
 
             <a th:href="@{/cart}" class="cart-icon">
                 <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
