@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cart_item`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `cart_item`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart_item` (
+CREATE TABLE `users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `quantity` int NOT NULL,
-  `product_id` bigint DEFAULT NULL,
-  `user_id` bigint DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKjcyd5wv4igqnw413rgxbfu4nv` (`product_id`),
-  KEY `FKjnaj4sjyqjkr4ivemf9gb25w` (`user_id`),
-  CONSTRAINT `FKjcyd5wv4igqnw413rgxbfu4nv` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  CONSTRAINT `FKjnaj4sjyqjkr4ivemf9gb25w` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cart_item`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `cart_item` WRITE;
-/*!40000 ALTER TABLE `cart_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart_item` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin@gmail.com','admin','$2a$12$JGriZzgFwZNEeuIzFcocjug9wb0/G0EJ1nco27FZoCvVLmfpfiiWe'),(4,'test@gmail.com','John','$2a$12$F2QRPx07EsQTswGmyxB4sOw7RLCnIDqux/LWhO5vfegs42OS2LE.C'),(5,'abc@gmail.com','Alex','$2a$12$aRRjmnRA5MkVg3M.xSc1G.jQkkvfx73WJhIvI.77IMkJyZpTT5dvC'),(6,'def@gmail.com','Boss','$2a$12$MBeLkc4HGARn/pOnBl1HSugtEBvL5EwRvQ4EzqAykvt4hUogKl/Zy'),(7,'nalan@hotmail.com','Nalan','$2a$10$XsJzt/LSSf2wiwCjDTkLJuUuyCHXRWVPUomrJ/qbDdd8id2TTKhpO'),(8,'teev12@gmail.com','Teev','$2a$10$CaR/1QMpWMp9SB0vh4djFuNTuZ/BzKuD2wIbNtWsxBRAVVwodbJay');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-09  3:14:40
+-- Dump completed on 2024-06-14 13:47:11

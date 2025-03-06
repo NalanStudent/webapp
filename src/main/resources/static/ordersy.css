@@ -21,7 +21,7 @@ header {
 }
 
 header .logo img {
-    max-height: 50px;
+    max-height: 150px;
 }
 
 header .nav-links a {

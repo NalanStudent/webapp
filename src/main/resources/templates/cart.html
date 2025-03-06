@@ -20,8 +20,7 @@
         </nav>
         <div class="header-right">
             <input type="text" placeholder="Search...">
-            <a href="" class="cart-icon">
-                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome icon -->
+            <a th:href="@{/cart}" class="cart-icon">
                 <span th:text="'Cart (' + ${counter} + ')'">Cart (?)</span>
             </a>
         </div>
@@ -72,15 +71,16 @@
             <div class="cart-summary">
                 <h3>Details</h3>
                 <p>Total : RM<span th:text="${#aggregates.sum(cartproducts.![total])}">RM ??</span></p>
+                <button type="submit" class="checkout-button">Checkout</button>
                 <form action="" method="post"> <!-- Assuming "/checkout" is the checkout endpoint -->
-                    <button type="submit" class="checkout-button">Checkout</button>
+
                 </form>
             </div>
         </section>
     </main>
 </div>
 <footer>
-    <p>&copy; 2024 My Shop. All rights reserved.</p>
+    <p>&copy; 2024 WOLF. All rights reserved.</p>
 </footer>
 
 </body>
